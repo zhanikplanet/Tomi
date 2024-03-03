@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb')
 const { ObjectId } = require('mongodb');
 
-const uri = "mongodb+srv://zhanikplanet1:narutoplanet@cluster0.zyfk98y.mongodb.net/?retryWrites=true&w=majority"
+const uri = "mongodb://localhost:27017/webFinal"
 
 const client = new MongoClient(uri, {
     useNewUrlParser: true,
