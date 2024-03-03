@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#"> 
+    <span></span><span></span>
+    <span></span><span></span>
+    <h1>Moderator</h1>
+  </a>
+
+
+
+  <form id="createPostForm">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+    <label for="content">Content:</label>
+    <textarea id="content" name="content" required></textarea>
+    <button type="submit">Create Post</button>
+  </form>
+  
+  <div id="postsList"></div>
+
+
+
+  <div id="users"></div>
+  <script>
+  document.getElementById('createPostForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const title = document.getElementById('title').value;
+  const content = document.getElementById('content').value;
+  createPost(title, content);
+});
+if (response.ok) {
+  const post = await response.json();
+  const postsList = document.getElementById('postsList');
+  const postElement = document.createElement('div');
+  postElement.innerHTML = `
+    <h3>${post.title}</h3>
+    <p>${post.content}</p>
+  `;
+  postsList.appendChild(postElement);
+} else {
+  alert('Failed to create post');
+}
+
+  async function createPost(title, content) {
+  const response = await fetch('/posts', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ title, content })
+  });
+
+}
+
+  </script>
+
+
+
+  <a href="index.html" class="btn btn-success" role="button">Log Out</a>
+
+</body>
+<footer><pre><h5>
+  Painting is a non—talkative art, and this, in my opinion, is its considerable advantage.
+  Eugene Delacroix (1798-1863) was a French painter
+
+  
+</h5></pre></footer>
+</html>
